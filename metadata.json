@@ -1,0 +1,6 @@
+{
+  "name": "Car Parking Management System",
+  "description": "Full-stack car parking management system with parking spaces, vehicle tracking, customer management, automated entry/exit fee calculations, payments, and analytical dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
