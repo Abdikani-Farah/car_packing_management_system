@@ -1,7 +1,6 @@
 import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
-import { createServer as createViteServer } from 'vite';
 import { connectDB } from './backend/config/db.js';
 import { seedDatabase } from './backend/seed.js';
 import { errorHandler } from './backend/middleware/errorHandler.js';
@@ -55,6 +54,12 @@ async function startServer() {
 
   // Vite Dev Server or Production Static Serving
   if (process.env.NODE_ENV !== 'production') {
+    // Loaded dynamically, ONLY for local dev. 'vite' is a heavy build-time
+    // tool — it must never be imported at the top of this file, because
+    // Vercel loads this same file inside a serverless function. A top-level
+    // `import ... from 'vite'` forces Vercel to bundle/initialize it on
+    // every cold start, which is a common cause of FUNCTION_INVOCATION_FAILED.
+    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
