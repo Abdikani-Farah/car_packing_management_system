@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx server.js",
-    "build": "vite build && esbuild server.js --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
-    "start": "node dist/server.cjs",
-    "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
-  },
+  "dev": "tsx server.js",
+  "build": "vite build",
+  "start": "node server.js",
+  "clean": "rm -rf dist",
+  "lint": "tsc --noEmit"
+},  
   "dependencies": {
     "@google/genai": "^2.4.0",
     "@tailwindcss/vite": "^4.1.14",
